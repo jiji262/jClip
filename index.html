@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <p class="text">Hello world! </p>
+        <a href="###" class="btn_copy">点击复制</a>
+        <br/><br/>
+        <a href="###" class="btn_ajax_text">复制ajax返回数据</a>
+        <br/><br/>
+        <a href="###" class="btn_func_text">复制function返回数据</a>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/jquery-1.8.3.min.js"><\/script>')</script>
+        <script src="js/jquery.jclip.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                //复制静态文本
+                $(".btn_copy").jclip({
+                    path:'js/ZeroClipboard.swf',
+                    copy:$(".text").text()
+                });
+
+                //复制ajax返回的数据
+                $.get("text.php", function(data){
+                    $(".btn_ajax_text").jclip({
+                        path:'js/ZeroClipboard.swf',
+                        copy:data
+                    });
+                });
+
+                //复制函数返回的数据
+                function retText(){
+                    return "return by function";
+                }
+                $(".btn_func_text").jclip({
+                    path:'js/ZeroClipboard.swf',
+                    copy:retText
+                });
+
+            });
+
+        </script>
+    </body>
+</html>
